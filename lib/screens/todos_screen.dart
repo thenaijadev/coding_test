@@ -30,7 +30,7 @@ class _TodosScreenState extends State<TodosScreen> {
     final theme = Theme.of(context).colorScheme;
     return Scaffold(
       body: _pages[_selectedIndex],
-      backgroundColor: const Color.fromARGB(255, 216, 219, 255),
+      backgroundColor: const Color.fromARGB(255, 219, 222, 252),
       appBar: AppBar(
         shadowColor: Colors.black,
         elevation: 4,

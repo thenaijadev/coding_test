@@ -2,8 +2,8 @@ import 'package:coding_test/core/widgets/text_widget.dart';
 import 'package:coding_test/widgets/main_button.dart';
 import 'package:flutter/material.dart';
 
-class EditTaskScreem extends StatelessWidget {
-  const EditTaskScreem({super.key});
+class EditTaskScreen extends StatelessWidget {
+  const EditTaskScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

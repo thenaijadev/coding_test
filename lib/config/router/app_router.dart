@@ -1,4 +1,4 @@
-import 'package:coding_test/screens/edit_task.dart';
+import 'package:coding_test/screens/completed_task_screen.dart';
 import 'package:coding_test/screens/todos_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class AppRouter {
         );
       case Routes.addTask:
         return MaterialPageRoute(
-          builder: (_) => const EditTaskScreem(),
+          builder: (_) => const CompletedTaskScreen(),
         );
       default:
         return MaterialPageRoute(
