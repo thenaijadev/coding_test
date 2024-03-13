@@ -1,3 +1,4 @@
+import 'package:coding_test/config/router/routes.dart';
 import 'package:coding_test/core/widgets/text_widget.dart';
 import 'package:coding_test/widgets/bottom_nav_bar.dart';
 import 'package:coding_test/widgets/todos_widget.dart';
@@ -48,7 +49,9 @@ class _TodosScreenState extends State<TodosScreen> {
           scale: 1.3,
           child: FloatingActionButton(
             shape: const CircleBorder(),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.addTask);
+            },
             child: const Icon(Icons.add),
           ),
         ),
