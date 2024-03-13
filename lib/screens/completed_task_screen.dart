@@ -1,5 +1,4 @@
 import 'package:coding_test/core/widgets/text_widget.dart';
-import 'package:coding_test/widgets/todo_widget.dart';
 import 'package:flutter/material.dart';
 
 class CompletedTaskScreen extends StatelessWidget {
@@ -10,10 +9,15 @@ class CompletedTaskScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 219, 222, 252),
         appBar: AppBar(
-          leading: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-            size: 25,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+              size: 25,
+            ),
           ),
           title: const TextWidget(
             text: "Completed Task",
@@ -27,7 +31,6 @@ class CompletedTaskScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: ListView(
             children: const [
-              TodoWidget(title: "TODO TITLE", subTitle: "TODO TITLE"),
               CompletedTasks(title: "TODO TITLE", subTitle: "TODO TITLE")
             ],
           ),
@@ -87,28 +90,6 @@ class CompletedTasks extends StatelessWidget {
                 )
               ],
             ),
-            Row(
-              children: [
-                Image.asset(
-                  "images/pencil.png",
-                  width: 25,
-                ),
-                const SizedBox(
-                  width: 26,
-                ),
-                Image.asset(
-                  "images/trash.png",
-                  width: 25,
-                ),
-                const SizedBox(
-                  width: 26,
-                ),
-                Image.asset(
-                  "images/check.png",
-                  width: 25,
-                )
-              ],
-            )
           ],
         ),
       ),

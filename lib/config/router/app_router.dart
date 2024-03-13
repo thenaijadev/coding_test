@@ -1,4 +1,6 @@
+import 'package:coding_test/screens/add_task_screen.dart';
 import 'package:coding_test/screens/completed_task_screen.dart';
+import 'package:coding_test/screens/edit_task.dart';
 import 'package:coding_test/screens/todos_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +15,14 @@ class AppRouter {
           builder: (_) => const TodosScreen(),
         );
       case Routes.addTask:
+        return MaterialPageRoute(
+          builder: (_) => const AddTaskScreen(),
+        );
+      case Routes.editTask:
+        return MaterialPageRoute(
+          builder: (_) => const EditTaskScreen(),
+        );
+      case Routes.completedTasks:
         return MaterialPageRoute(
           builder: (_) => const CompletedTaskScreen(),
         );
