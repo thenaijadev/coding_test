@@ -1,9 +1,8 @@
 import 'package:coding_test/core/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-class CompletedTasks extends StatelessWidget {
-  const CompletedTasks(
-      {super.key, required this.title, required this.subTitle});
+class CompletedTask extends StatelessWidget {
+  const CompletedTask({super.key, required this.title, required this.subTitle});
   final String title;
   final String subTitle;
   @override
