@@ -1,8 +1,9 @@
 import 'package:coding_test/core/widgets/text_widget.dart';
+import 'package:coding_test/widgets/main_button.dart';
 import 'package:flutter/material.dart';
 
-class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({super.key});
+class EditTaskScreem extends StatelessWidget {
+  const EditTaskScreem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class AddTaskScreen extends StatelessWidget {
           size: 25,
         ),
         title: const TextWidget(
-          text: "Add Task",
+          text: "Edit Task",
           color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 20,
@@ -58,27 +59,18 @@ class AddTaskScreen extends StatelessWidget {
                 const SizedBox(
                   height: 54,
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15))),
-                      backgroundColor: const MaterialStatePropertyAll(
-                        Color(0xff9395D3),
-                      ),
-                      elevation: const MaterialStatePropertyAll(4)),
-                  child: const SizedBox(
-                    width: double.infinity,
-                    height: 65,
-                    child: Center(
-                      child: TextWidget(
-                        text: "ADD",
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    MainButton(
+                      title: "Update",
+                      onPressed: () {},
                     ),
-                  ),
+                    MainButton(
+                      title: "Delete",
+                      onPressed: () {},
+                    )
+                  ],
                 )
               ],
             ),
