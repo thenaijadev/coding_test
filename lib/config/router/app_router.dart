@@ -1,6 +1,8 @@
-import 'routes.dart';
-import '../../core/widgets/error_screen.dart';
+import 'package:coding_test/screens/todos_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/widgets/error_screen.dart';
+import 'routes.dart';
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
