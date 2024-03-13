@@ -5,21 +5,20 @@ ThemeData lightTheme() {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: "Multi",
     brightness: Brightness.light,
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       brightness: Brightness.light,
-      background: Colors.grey.shade300,
-      primary: Colors.grey.shade200,
-      secondary: Colors.grey.shade500,
-      inversePrimary: Colors.grey.shade800,
+      background: Colors.white,
+      primary: Color(0xff9395D3),
+      secondary: Colors.white,
     ),
     textTheme: ThemeData.light()
         .textTheme
         .apply(bodyColor: Colors.grey[800], displayColor: Colors.black),
-    // appBarTheme: const AppBarTheme(
-    //     backgroundColor: Colors.white,
-    //     elevation: 0,
-    //     centerTitle: true,
-    //     iconTheme: IconThemeData(color: Colors.grey),
-    //     titleTextStyle: TextStyle(color: Colors.grey, fontSize: 18)),
+    appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xff9395D3),
+        elevation: 3,
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.grey),
+        titleTextStyle: TextStyle(color: Colors.grey, fontSize: 18)),
   );
 }
