@@ -9,7 +9,9 @@ class TodosWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: ListView(
-        children: const [TodoWidget()],
+        children: const [
+          TodoWidget(title: "TODO TITLE", subTitle: "TODO SUB TITLE")
+        ],
       ),
     );
   }

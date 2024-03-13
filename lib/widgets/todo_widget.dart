@@ -2,8 +2,9 @@ import 'package:coding_test/core/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 class TodoWidget extends StatelessWidget {
-  const TodoWidget({super.key});
-
+  const TodoWidget({super.key, required this.title, required this.subTitle});
+  final String title;
+  final String subTitle;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,7 +38,7 @@ class TodoWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextWidget(
-                  text: "TODO TITLE",
+                  text: title,
                   fontSize: 13,
                   color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.bold,
@@ -45,8 +46,8 @@ class TodoWidget extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                const TextWidget(
-                  text: "TODO SUB TITLE",
+                TextWidget(
+                  text: subTitle,
                   fontSize: 10,
                 )
               ],

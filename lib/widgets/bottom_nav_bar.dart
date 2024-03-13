@@ -7,6 +7,8 @@ BottomNavigationBar bottomNavigationBar(
     required theme,
     required int selectedIndex}) {
   return BottomNavigationBar(
+    // selectedItemColor: const Color(0xff9395D3),
+    // unselectedItemColor: const Color(0xff8B8787),
     selectedFontSize: 10,
     unselectedFontSize: 10,
     backgroundColor: const Color.fromARGB(255, 255, 255, 255),
