@@ -14,6 +14,16 @@ class TasksListWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: BlocBuilder<TasksBloc, TasksState>(
         builder: (context, state) {
+          if (state is TasksStateTaskChanged) {
+            if (state.tasks
+                .where((element) => element.isCompleted == false)
+                .toList()
+                .isEmpty) {
+              return const Center(
+                child: TextWidget(text: "You have no pending tasks"),
+              );
+            }
+          }
           return state is TasksStateTaskChanged
               ? ListView.builder(
                   itemCount: state.tasks.length,

@@ -66,19 +66,21 @@ class _TodosScreenState extends State<TodosScreen> {
               ),
               centerTitle: false,
             ),
-      floatingActionButton: Transform.translate(
-        offset: const Offset(-10, -20),
-        child: Transform.scale(
-          scale: 1.3,
-          child: FloatingActionButton(
-            shape: const CircleBorder(),
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.addTask);
-            },
-            child: const Icon(Icons.add),
-          ),
-        ),
-      ),
+      floatingActionButton: _selectedIndex == 0
+          ? Transform.translate(
+              offset: const Offset(-10, -20),
+              child: Transform.scale(
+                scale: 1.3,
+                child: FloatingActionButton(
+                  shape: const CircleBorder(),
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.addTask);
+                  },
+                  child: const Icon(Icons.add),
+                ),
+              ),
+            )
+          : const SizedBox(),
       bottomNavigationBar: bottomNavigationBar(
           onTap: _onItemTapped, theme: theme, selectedIndex: _selectedIndex),
     );

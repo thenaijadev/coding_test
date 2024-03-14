@@ -19,11 +19,16 @@ class TasksProvider {
   List<TaskModel> markTaskCompleted(String id) {
     final index = _tasks.indexWhere((element) => element.id == id);
 
-    final task = _tasks[index];
-    task.isCompleted = true;
-    _tasks[index] = task;
+    if (index != -1) {
+      final task = _tasks[index];
+      final updatedTask = task.copyWith(isCompleted: true);
 
-    return _tasks;
+      _tasks[index] = updatedTask;
+
+      return _tasks;
+    } else {
+      return _tasks;
+    }
   }
 
   List<TaskModel> editTask({required String id, required TaskModel taskModel}) {

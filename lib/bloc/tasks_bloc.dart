@@ -15,7 +15,6 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       final TaskModel task = event.task;
       final tasks = provider.addTask(task);
       emit(TasksStateTaskChanged(tasks: tasks));
-      print(state);
     });
 
     on<TasksEventDeleteTasks>((event, emit) {

@@ -92,6 +92,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   builder: (context, state) {
                     return ElevatedButton(
                       onPressed: () {
+                        if (title.isEmpty || subTitle.isEmpty) {
+                          return;
+                        }
                         context.read<TasksBloc>().add(TasksEventAddTasks(
                             task: TaskModel(title: title, subTitle: subTitle)));
                       },

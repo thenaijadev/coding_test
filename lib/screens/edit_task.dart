@@ -93,6 +93,10 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                     MainButton(
                       title: "Update",
                       onPressed: () {
+                        if (titleController.text.isEmpty ||
+                            detailController.text.isEmpty) {
+                          return;
+                        }
                         context.read<TasksBloc>().add(TasksEventUpdateTasks(
                             id: widget.task.id!,
                             task: TaskModel(
