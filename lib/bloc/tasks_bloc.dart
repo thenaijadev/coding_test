@@ -31,5 +31,13 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       final tasks = provider.markTaskCompleted(task);
       emit(TasksStateTaskChanged(tasks: tasks));
     });
+
+    on<TasksEventUpdateTasks>((event, emit) {
+      emit(TaskStateIsLoading());
+      final String id = event.id;
+      final TaskModel task = event.task;
+      final tasks = provider.editTask(id: id, taskModel: task);
+      emit(TasksStateTaskChanged(tasks: tasks));
+    });
   }
 }

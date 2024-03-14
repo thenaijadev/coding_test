@@ -2,7 +2,7 @@ import 'package:coding_test/config/router/routes.dart';
 import 'package:coding_test/core/widgets/text_widget.dart';
 import 'package:coding_test/widgets/bottom_nav_bar.dart';
 import 'package:coding_test/widgets/completed_tasks_widget.dart';
-import 'package:coding_test/widgets/todos_widget.dart';
+import 'package:coding_test/widgets/tasks_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class TodosScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _TodosScreenState extends State<TodosScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const TodosWidget(),
+    const TasksListWidget(),
     const CompletedTasksWidget()
   ];
 

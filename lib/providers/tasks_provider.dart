@@ -2,7 +2,6 @@ import 'package:coding_test/models/task_model.dart';
 
 class TasksProvider {
   final List<TaskModel> _tasks = [];
-  final List<TaskModel> _completeTasks = [];
 
   List<TaskModel> get todos => _tasks;
 
@@ -23,7 +22,19 @@ class TasksProvider {
     final task = _tasks[index];
     task.isCompleted = true;
     _tasks[index] = task;
-    print(_tasks);
+
+    return _tasks;
+  }
+
+  List<TaskModel> editTask({required String id, required TaskModel taskModel}) {
+    final index = _tasks.indexWhere((element) => element.id == id);
+
+    final task = _tasks[index];
+    task.title = taskModel.title;
+    task.subTitle = taskModel.subTitle;
+
+    _tasks[index] = task;
+
     return _tasks;
   }
 }

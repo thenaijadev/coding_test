@@ -24,3 +24,12 @@ class TasksEventMarkAsCompleted extends TasksEvent {
     required this.id,
   });
 }
+
+class TasksEventUpdateTasks extends TasksEvent {
+  final String id;
+  final TaskModel task;
+  TasksEventUpdateTasks({
+    required this.task,
+    required this.id,
+  });
+}

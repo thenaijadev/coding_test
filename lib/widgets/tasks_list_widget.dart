@@ -1,10 +1,12 @@
 import 'package:coding_test/bloc/tasks_bloc.dart';
+import 'package:coding_test/config/router/routes.dart';
+import 'package:coding_test/core/widgets/text_widget.dart';
 import 'package:coding_test/widgets/task_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TodosWidget extends StatelessWidget {
-  const TodosWidget({super.key});
+class TasksListWidget extends StatelessWidget {
+  const TasksListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +32,16 @@ class TodosWidget extends StatelessWidget {
                                   TasksEventDeleteTasks(
                                       id: state.tasks[index].id!));
                             },
-                            onEdit: () {},
+                            onEdit: () {
+                              Navigator.of(context).pushNamed(Routes.editTask,
+                                  arguments: state.tasks[index]);
+                            },
                           )
                         : const SizedBox();
                   }))
-              : const SizedBox();
+              : const Center(
+                  child: TextWidget(text: "You have no pending tasks"),
+                );
         },
       ),
     );

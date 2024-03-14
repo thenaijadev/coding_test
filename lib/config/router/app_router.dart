@@ -1,5 +1,5 @@
+import 'package:coding_test/models/task_model.dart';
 import 'package:coding_test/screens/add_task_screen.dart';
-
 import 'package:coding_test/screens/edit_task.dart';
 import 'package:coding_test/screens/todos_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +19,9 @@ class AppRouter {
           builder: (_) => const AddTaskScreen(),
         );
       case Routes.editTask:
+        var task = routeSettings.arguments as TaskModel;
         return MaterialPageRoute(
-          builder: (_) => const EditTaskScreen(),
+          builder: (_) => EditTaskScreen(task: task),
         );
 
       default:

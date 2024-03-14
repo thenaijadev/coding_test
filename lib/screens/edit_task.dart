@@ -1,18 +1,43 @@
+import 'package:coding_test/bloc/tasks_bloc.dart';
 import 'package:coding_test/core/widgets/text_widget.dart';
+import 'package:coding_test/models/task_model.dart';
 import 'package:coding_test/widgets/main_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class EditTaskScreen extends StatelessWidget {
-  const EditTaskScreen({super.key});
+class EditTaskScreen extends StatefulWidget {
+  const EditTaskScreen({super.key, required this.task});
+  final TaskModel task;
+
+  @override
+  State<EditTaskScreen> createState() => _EditTaskScreenState();
+}
+
+class _EditTaskScreenState extends State<EditTaskScreen> {
+  late TextEditingController titleController;
+  late TextEditingController detailController;
+  @override
+  void initState() {
+    titleController = TextEditingController(text: widget.task.title);
+    detailController = TextEditingController(
+        text: widget.task.subTitle); // Assuming subTitle is the task detail
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-          size: 25,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 25,
+          ),
         ),
         title: const TextWidget(
           text: "Edit Task",
@@ -22,17 +47,19 @@ class EditTaskScreen extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 29.0),
-            child: Column(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: ListView(
+          children: [
+            Column(
               children: [
                 const SizedBox(
                   height: 43,
                 ),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: titleController,
+                  onChanged: (value) {},
+                  decoration: const InputDecoration(
                     hintText: "Title",
                     hintStyle: TextStyle(
                       fontWeight: FontWeight.normal,
@@ -45,8 +72,9 @@ class EditTaskScreen extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: detailController,
+                  decoration: const InputDecoration(
                     hintText: "Detail",
                     hintStyle: TextStyle(
                       fontWeight: FontWeight.normal,
@@ -64,18 +92,35 @@ class EditTaskScreen extends StatelessWidget {
                   children: [
                     MainButton(
                       title: "Update",
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<TasksBloc>().add(TasksEventUpdateTasks(
+                            id: widget.task.id!,
+                            task: TaskModel(
+                                title: titleController.text,
+                                subTitle: detailController.text)));
+                      },
                     ),
-                    MainButton(
-                      title: "Delete",
-                      onPressed: () {},
+                    BlocListener<TasksBloc, TasksState>(
+                      listener: (context, state) {
+                        if (state is TasksStateTaskChanged) {
+                          Navigator.pop(context);
+                        }
+                      },
+                      child: MainButton(
+                        title: "Delete",
+                        onPressed: () {
+                          context
+                              .read<TasksBloc>()
+                              .add(TasksEventDeleteTasks(id: widget.task.id!));
+                        },
+                      ),
                     )
                   ],
                 )
               ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
