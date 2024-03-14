@@ -7,6 +7,8 @@ import 'package:meta/meta.dart';
 part 'tasks_event.dart';
 part 'tasks_state.dart';
 
+//This file is the bloc handler for the state management
+
 class TasksBloc extends Bloc<TasksEvent, TasksState> {
   final TasksProvider provider;
   TasksBloc({required this.provider}) : super(TasksInitial()) {

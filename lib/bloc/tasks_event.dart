@@ -4,6 +4,7 @@ part of 'tasks_bloc.dart';
 @immutable
 sealed class TasksEvent {}
 
+// These are the events that are used to call a provider function and change state as a result
 class TasksEventAddTasks extends TasksEvent {
   final TaskModel task;
   TasksEventAddTasks({

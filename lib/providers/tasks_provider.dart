@@ -5,17 +5,21 @@ class TasksProvider {
 
   List<TaskModel> get todos => _tasks;
 
+//This function is for ading a task
+
   List<TaskModel> addTask(TaskModel task) {
     _tasks.add(task);
     return todos;
   }
 
+//This function is for deleting a task
   List<TaskModel> deleteTask(String id) {
     _tasks.removeWhere((element) => element.id == id);
 
     return _tasks;
   }
 
+//This function is for marking a task as completed
   List<TaskModel> markTaskCompleted(String id) {
     final index = _tasks.indexWhere((element) => element.id == id);
 
@@ -31,6 +35,7 @@ class TasksProvider {
     }
   }
 
+//This function is for editing a task
   List<TaskModel> editTask({required String id, required TaskModel taskModel}) {
     final index = _tasks.indexWhere((element) => element.id == id);
 
