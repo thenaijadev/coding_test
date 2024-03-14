@@ -1,4 +1,7 @@
+import 'package:coding_test/bloc/tasks_bloc.dart';
+import 'package:coding_test/providers/tasks_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'config/router/app_router.dart';
 import 'config/router/routes.dart';
@@ -23,12 +26,15 @@ class MyApp extends StatelessWidget {
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: MaterialApp(
-        theme: lightTheme(),
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        initialRoute: Routes.home,
-        onGenerateRoute: appRouter.onGenerateRoute,
+      child: BlocProvider(
+        create: (context) => TasksBloc(provider: TasksProvider()),
+        child: MaterialApp(
+          theme: lightTheme(),
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          initialRoute: Routes.home,
+          onGenerateRoute: appRouter.onGenerateRoute,
+        ),
       ),
     );
   }

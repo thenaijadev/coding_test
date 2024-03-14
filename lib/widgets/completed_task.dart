@@ -8,7 +8,7 @@ class CompletedTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 22.0),
+      padding: const EdgeInsets.only(top: 21.0),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 18),

@@ -1,14 +1,24 @@
 import 'package:coding_test/core/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
-class TodoWidget extends StatelessWidget {
-  const TodoWidget({super.key, required this.title, required this.subTitle});
+class TaskWidget extends StatelessWidget {
+  const TaskWidget(
+      {super.key,
+      required this.title,
+      required this.subTitle,
+      required this.onComplete,
+      required this.onDelete,
+      required this.onEdit});
   final String title;
   final String subTitle;
+  final VoidCallback onComplete;
+  final VoidCallback onDelete;
+  final VoidCallback onEdit;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 22.0),
+      padding: const EdgeInsets.only(top: 21.0),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 18),
@@ -54,23 +64,32 @@ class TodoWidget extends StatelessWidget {
             ),
             Row(
               children: [
-                Image.asset(
-                  "images/pencil.png",
-                  width: 25,
+                GestureDetector(
+                  onTap: onEdit,
+                  child: Image.asset(
+                    "images/pencil.png",
+                    width: 25,
+                  ),
                 ),
                 const SizedBox(
                   width: 26,
                 ),
-                Image.asset(
-                  "images/trash.png",
-                  width: 25,
+                GestureDetector(
+                  onTap: onDelete,
+                  child: Image.asset(
+                    "images/trash.png",
+                    width: 25,
+                  ),
                 ),
                 const SizedBox(
                   width: 26,
                 ),
-                Image.asset(
-                  "images/check.png",
-                  width: 25,
+                GestureDetector(
+                  onTap: onComplete,
+                  child: Image.asset(
+                    "images/check.png",
+                    width: 25,
+                  ),
                 )
               ],
             )

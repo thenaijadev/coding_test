@@ -1,22 +1,28 @@
 import 'dart:convert';
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-class Task {
-  final String title;
-  final String subTitle;
-  final bool isCompleted;
-  Task({
-    required this.title,
-    required this.subTitle,
-    required this.isCompleted,
-  });
+import 'package:uuid/uuid.dart';
 
-  Task copyWith({
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+class TaskModel {
+  String title;
+  String subTitle;
+  bool? isCompleted;
+  String? id;
+  var uuid = const Uuid();
+  TaskModel(
+      {required this.title,
+      required this.subTitle,
+      this.isCompleted = false,
+      this.id}) {
+    id ??= const Uuid().v4();
+  }
+
+  TaskModel copyWith({
     String? title,
     String? subTitle,
     bool? isCompleted,
   }) {
-    return Task(
+    return TaskModel(
       title: title ?? this.title,
       subTitle: subTitle ?? this.subTitle,
       isCompleted: isCompleted ?? this.isCompleted,
@@ -31,8 +37,8 @@ class Task {
     };
   }
 
-  factory Task.fromMap(Map<String, dynamic> map) {
-    return Task(
+  factory TaskModel.fromMap(Map<String, dynamic> map) {
+    return TaskModel(
       title: map['title'] as String,
       subTitle: map['subTitle'] as String,
       isCompleted: map['isCompleted'] as bool,
@@ -41,15 +47,15 @@ class Task {
 
   String toJson() => json.encode(toMap());
 
-  factory Task.fromJson(String source) =>
-      Task.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory TaskModel.fromJson(String source) =>
+      TaskModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() =>
-      'Task(title: $title, subTitle: $subTitle, isCompleted: $isCompleted)';
+      'Task(title: $title, subTitle: $subTitle, isCompleted: $isCompleted, id: $id)';
 
   @override
-  bool operator ==(covariant Task other) {
+  bool operator ==(covariant TaskModel other) {
     if (identical(this, other)) return true;
 
     return other.title == title &&
